@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Пироговская рыбалка — платная рыбалка у Пироговского водохранилища</title>
+  <meta name="description" content="Платная рыбалка у Пироговского водохранилища. Карп, щука, форель. Аренда беседок, мангала. Работаем круглый год." />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #222;
+      background: #fff;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ─── HEADER ─── */
+    header {
+      background: #1a3a2a;
+      color: #fff;
+      padding: 0 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,.4);
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .logo {
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: .5px;
+    }
+
+    .logo span {
+      color: #7ec87e;
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+      font-size: .95rem;
+    }
+
+    nav a {
+      opacity: .85;
+      transition: opacity .2s;
+    }
+
+    nav a:hover {
+      opacity: 1;
+      color: #7ec87e;
+    }
+
+    .header-phone {
+      font-weight: 600;
+      font-size: 1rem;
+      white-space: nowrap;
+    }
+
+    .header-phone a {
+      color: #7ec87e;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,.52), rgba(0,0,0,.52)),
+                  url('hero.jpg') center/cover no-repeat;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      padding: 60px 20px;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 18px;
+      text-shadow: 0 2px 8px rgba(0,0,0,.5);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 32px;
+      opacity: .9;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #3a8f3a;
+      color: #fff;
+      padding: 14px 36px;
+      border-radius: 4px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      transition: background .2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn:hover {
+      background: #2d6e2d;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #fff;
+      margin-left: 12px;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,.15);
+    }
+
+    /* ─── SECTIONS ─── */
+    section {
+      padding: 64px 20px;
+    }
+
+    section:nth-child(even) {
+      background: #f5f9f5;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #1a3a2a;
+    }
+
+    .section-sub {
+      color: #555;
+      margin-bottom: 40px;
+      font-size: 1rem;
+    }
+
+    /* ─── FEATURES ─── */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 28px;
+    }
+
+    .feature-card {
+      background: #fff;
+      border: 1px solid #dde8dd;
+      border-radius: 8px;
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    .feature-icon {
+      font-size: 2.4rem;
+      margin-bottom: 14px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      color: #1a3a2a;
+    }
+
+    .feature-card p {
+      font-size: .9rem;
+      color: #555;
+    }
+
+    /* ─── FISH ─── */
+    .fish-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+
+    .fish-card {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #dde8dd;
+      background: #fff;
+      text-align: center;
+    }
+
+    .fish-img {
+      width: 100%;
+      height: 140px;
+      background: #c8dfc8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+
+    .fish-card h3 {
+      padding: 12px 8px 4px;
+      font-size: 1rem;
+      color: #1a3a2a;
+    }
+
+    .fish-card p {
+      padding: 0 8px 14px;
+      font-size: .85rem;
+      color: #666;
+    }
+
+    /* ─── PRICES ─── */
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .95rem;
+    }
+
+    .price-table th,
+    .price-table td {
+      padding: 13px 16px;
+      text-align: left;
+      border-bottom: 1px solid #dde8dd;
+    }
+
+    .price-table th {
+      background: #1a3a2a;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .price-table tr:hover td {
+      background: #f0f7f0;
+    }
+
+    .price-note {
+      font-size: .85rem;
+      color: #666;
+      margin-top: 14px;
+    }
+
+    /* ─── GALLERY ─── */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 12px;
+    }
+
+    .gallery-item {
+      height: 200px;
+      background: #c8dfc8;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: #5a8a5a;
+      overflow: hidden;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ─── HOW TO GET ─── */
+    .directions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .directions ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .directions li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .dir-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .map-placeholder {
+      background: #c8dfc8;
+      border-radius: 8px;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: #3a6a3a;
+      border: 1px solid #b0d0b0;
+    }
+
+    /* ─── CONTACTS ─── */
+    .contacts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 28px;
+    }
+
+    .contact-block h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1a3a2a;
+      margin-bottom: 8px;
+    }
+
+    .contact-block p, .contact-block a {
+      color: #444;
+      font-size: .95rem;
+    }
+
+    .contact-block a:hover {
+      color: #3a8f3a;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #1a3a2a;
+      color: #aac8aa;
+      text-align: center;
+      padding: 28px 20px;
+      font-size: .9rem;
+    }
+
+    footer a {
+      color: #7ec87e;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { display: none; }
+
+      .hero h1 { font-size: 1.8rem; }
+
+      .directions {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header>
+  <div class="header-inner">
+    <div class="logo">Пироговская <span>рыбалка</span></div>
+    <nav>
+      <a href="#fish">Рыба</a>
+      <a href="#prices">Цены</a>
+      <a href="#services">Услуги</a>
+      <a href="#gallery">Галерея</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <div class="header-phone">
+      <a href="tel:+7XXXXXXXXXX">+7 (XXX) XXX-XX-XX</a>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero">
+  <div>
+    <h1>Платная рыбалка<br>у Пироговского водохранилища</h1>
+    <p>Карп, щука, форель и другая рыба — круглый год, с удобствами</p>
+    <a href="tel:+7XXXXXXXXXX" class="btn">Позвонить и записаться</a>
+    <a href="#prices" class="btn btn-outline">Посмотреть цены</a>
+  </div>
+</section>
+
+<!-- ═══════════════ ПРЕИМУЩЕСТВА ═══════════════ -->
+<section id="services">
+  <div class="container">
+    <h2 class="section-title">Почему едут к нам</h2>
+    <p class="section-sub">Всё для комфортного отдыха и хорошего улова</p>
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon">🎣</div>
+        <h3>Хороший клёв</h3>
+        <p>Водоём регулярно зарыбляется. Рыба клюёт в любое время суток.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏕️</div>
+        <h3>Беседки и мангалы</h3>
+        <p>Уютные беседки с мангалами прямо у воды. Отличное место для семейного отдыха.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🅿️</div>
+        <h3>Парковка</h3>
+        <p>Большая бесплатная парковка прямо у водоёма.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🕐</div>
+        <h3>Работаем круглый год</h3>
+        <p>Открыты каждый день. Летняя и зимняя рыбалка.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎿</div>
+        <h3>Снасти в аренду</h3>
+        <p>Можно приехать совсем без снастей — выдадим всё необходимое.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🐛</div>
+        <h3>Наживка и прикормка</h3>
+        <p>Широкий выбор наживки и прикормки на месте.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ РЫБА ═══════════════ -->
+<section id="fish">
+  <div class="container">
+    <h2 class="section-title">Какая рыба водится</h2>
+    <p class="section-sub">Водоём регулярно зарыбляется</p>
+    <div class="fish-grid">
+      <div class="fish-card">
+        <div class="fish-img">🐟</div>
+        <h3>Карп</h3>
+        <p>До 10 кг, хороший клёв весь сезон</p>
+      </div>
+      <div class="fish-card">
+        <div class="fish-img">🐟</div>
+        <h3>Щука</h3>
+        <p>Активный хищник, подходит для спиннинга</p>
+      </div>
+      <div class="fish-card">
+        <div class="fish-img">🐟</div>
+        <h3>Форель</h3>
+        <p>Регулярные зарыбления, отличные трофеи</p>
+      </div>
+      <div class="fish-card">
+        <div class="fish-img">🐟</div>
+        <h3>Окунь</h3>
+        <p>Отлично клюёт на блёсны и мормышку</p>
+      </div>
+      <div class="fish-card">
+        <div class="fish-img">🐟</div>
+        <h3>Лещ</h3>
+        <p>Крупный, ловится на фидер</p>
+      </div>
+      <div class="fish-card">
+        <div class="fish-img">🐟</div>
+        <h3>Плотва</h3>
+        <p>Отличный улов для семейной рыбалки</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ ЦЕНЫ ═══════════════ -->
+<section id="prices">
+  <div class="container">
+    <h2 class="section-title">Цены</h2>
+    <p class="section-sub">Актуальные тарифы на 2025 год</p>
+
+    <table class="price-table">
+      <thead>
+        <tr>
+          <th>Услуга</th>
+          <th>Стоимость</th>
+          <th>Примечание</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Рыбалка (суточный билет)</td>
+          <td>XXX ₽</td>
+          <td>Улов включён / или платить за кг</td>
+        </tr>
+        <tr>
+          <td>Рыбалка (3 часа)</td>
+          <td>XXX ₽</td>
+          <td>Будние дни</td>
+        </tr>
+        <tr>
+          <td>Зимняя рыбалка</td>
+          <td>XXX ₽</td>
+          <td>Бурение лунок включено</td>
+        </tr>
+        <tr>
+          <td>Аренда беседки (4 чел.)</td>
+          <td>XXX ₽/час</td>
+          <td>Мангал входит</td>
+        </tr>
+        <tr>
+          <td>Аренда удочки</td>
+          <td>XXX ₽</td>
+          <td>В день</td>
+        </tr>
+        <tr>
+          <td>Наживка / прикормка</td>
+          <td>от XXX ₽</td>
+          <td>Широкий выбор на месте</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="price-note">* Цены уточняйте по телефону. Возможны скидки для групп и постоянных гостей.</p>
+  </div>
+</section>
+
+<!-- ═══════════════ ГАЛЕРЕЯ ═══════════════ -->
+<section id="gallery">
+  <div class="container">
+    <h2 class="section-title">Галерея</h2>
+    <p class="section-sub">Фото водоёма, уловов и отдыха</p>
+    <div class="gallery">
+      <div class="gallery-item">📸</div>
+      <div class="gallery-item">📸</div>
+      <div class="gallery-item">📸</div>
+      <div class="gallery-item">📸</div>
+      <div class="gallery-item">📸</div>
+      <div class="gallery-item">📸</div>
+    </div>
+    <p class="price-note" style="margin-top:16px">Сюда добавим ваши фото — водоём, улов, беседки.</p>
+  </div>
+</section>
+
+<!-- ═══════════════ КАК ДОБРАТЬСЯ ═══════════════ -->
+<section id="how-to-get">
+  <div class="container">
+    <h2 class="section-title">Как добраться</h2>
+    <p class="section-sub">Мы находимся рядом с Пироговским водохранилищем, Московская область</p>
+    <div class="directions">
+      <div>
+        <ul>
+          <li>
+            <span class="dir-icon">🚗</span>
+            <div>
+              <strong>На автомобиле:</strong><br>
+              Ярославское шоссе, поворот на посёлок Пирогово. [Точный маршрут — уточнить и добавить]
+            </div>
+          </li>
+          <li>
+            <span class="dir-icon">🚌</span>
+            <div>
+              <strong>На общественном транспорте:</strong><br>
+              Электричка с Ярославского вокзала, далее автобус. [Уточнить остановку]
+            </div>
+          </li>
+          <li>
+            <span class="dir-icon">📍</span>
+            <div>
+              <strong>Адрес:</strong><br>
+              Московская область, [точный адрес]
+            </div>
+          </li>
+          <li>
+            <span class="dir-icon">🕐</span>
+            <div>
+              <strong>Режим работы:</strong><br>
+              Круглый год, [часы — уточнить]
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="map-placeholder">
+        🗺️ Здесь будет карта (Яндекс.Карты или Google Maps)
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ КОНТАКТЫ ═══════════════ -->
+<section id="contacts">
+  <div class="container">
+    <h2 class="section-title">Контакты</h2>
+    <p class="section-sub">Свяжитесь с нами — мы ответим на все вопросы</p>
+    <div class="contacts-grid">
+      <div class="contact-block">
+        <h3>📞 Телефон</h3>
+        <p><a href="tel:+7XXXXXXXXXX">+7 (XXX) XXX-XX-XX</a></p>
+        <p style="font-size:.85rem;color:#888;margin-top:4px">Звонить с 8:00 до 21:00</p>
+      </div>
+      <div class="contact-block">
+        <h3>💬 WhatsApp / Telegram</h3>
+        <p><a href="#">Написать в WhatsApp</a></p>
+        <p><a href="#">Написать в Telegram</a></p>
+      </div>
+      <div class="contact-block">
+        <h3>📍 Адрес</h3>
+        <p>Московская область,<br>[точный адрес]</p>
+      </div>
+      <div class="contact-block">
+        <h3>🕐 Режим работы</h3>
+        <p>Пн–Вс: [часы работы]<br>Без выходных</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <p>© 2025 Пироговская рыбалка. Все права защищены.</p>
+  <p style="margin-top:6px;font-size:.8rem">
+    Московская область · <a href="tel:+7XXXXXXXXXX">+7 (XXX) XXX-XX-XX</a>
+  </p>
+</footer>
+
+</body>
+</html>
