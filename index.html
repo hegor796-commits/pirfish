@@ -26,13 +26,14 @@
 
     /* ─── HEADER ─── */
     header {
-      background: #1a3a2a;
-      color: #fff;
+      background: #fff;
+      color: #1a3a2a;
       padding: 0 20px;
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 8px rgba(0,0,0,.4);
+      box-shadow: 0 2px 8px rgba(0,0,0,.12);
+      border-bottom: 2px solid #3a8f3a;
     }
 
     .header-inner {
@@ -51,7 +52,7 @@
     }
 
     .logo span {
-      color: #7ec87e;
+      color: #3a8f3a;
     }
 
     nav {
@@ -61,13 +62,14 @@
     }
 
     nav a {
-      opacity: .85;
-      transition: opacity .2s;
+      color: #1a3a2a;
+      opacity: .8;
+      transition: opacity .2s, color .2s;
     }
 
     nav a:hover {
       opacity: 1;
-      color: #7ec87e;
+      color: #3a8f3a;
     }
 
     .header-phone {
@@ -77,7 +79,7 @@
     }
 
     .header-phone a {
-      color: #7ec87e;
+      color: #3a8f3a;
     }
 
     /* ─── HERO ─── */
